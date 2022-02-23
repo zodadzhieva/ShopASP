@@ -1,4 +1,5 @@
-﻿using ICSharpCode.Decompiler.CSharp.Syntax;
+﻿using ASPshop.Data;
+using ICSharpCode.Decompiler.CSharp.Syntax;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,6 @@ namespace ASPshop.Models
         
         [NotMapped]
         public List<SelectListItem> Orders { get; set; }
-
-
+        public RoleType RoleType { get; internal set; }
     }
 }

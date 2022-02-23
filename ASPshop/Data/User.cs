@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICSharpCode.Decompiler.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace ASPshop.Data
   
     public class User
     {
+        internal readonly Role RoleType;
+
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
