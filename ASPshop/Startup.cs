@@ -28,8 +28,8 @@ namespace ASPshop
             services.AddControllersWithViews();
             services.AddDbContext<ShopContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<ASPshopContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("ASPshopContext")));
+           // services.AddDbContext<ASPshopContext>(options =>
+                   // options.UseSqlServer(Configuration.GetConnectionString("ASPshopContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

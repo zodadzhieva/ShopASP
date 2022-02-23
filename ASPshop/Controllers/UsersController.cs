@@ -12,9 +12,9 @@ namespace ASPshop.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly ASPshopContext _context;
+        private readonly ShopContext _context;
 
-        public UsersController(ASPshopContext context)
+        public UsersController(ShopContext context)
         {
             _context = context;
         }
@@ -34,15 +34,11 @@ namespace ASPshop.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var user = await _context.User.FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
             {
                 return NotFound();
             }
-
-            // return View(user);
-            // }
             UsersVM model = new UsersVM
             {
                 Id = user.Id,
@@ -56,6 +52,7 @@ namespace ASPshop.Controllers
             return View(model);
         }
 
+
         // GET: Users/Create
         public IActionResult Create()
         {
@@ -67,7 +64,7 @@ namespace ASPshop.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int id,[Bind("Username,Password,FullName,Email,Role")] User user)
+        public async Task<IActionResult> Create([Bind("Username,Password,FullName,Email,Role")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -108,16 +105,14 @@ namespace ASPshop.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id,[Bind("Id,Username,Password,FullName,Email,Role")] UsersVM user)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Username,Password,FullName,Email,Role")] User user)
         {
-           
-
             if (ModelState.IsValid)
             {
                 try
                 {
                     User userInDatabase = await _context.User.FindAsync(id);
-                    if(userInDatabase==null)
+                    if (userInDatabase == null)
                     {
                         return NotFound();
                     }
@@ -126,7 +121,7 @@ namespace ASPshop.Controllers
                     userInDatabase.Password = user.Password;
                     userInDatabase.FullName = user.FullName;
                     userInDatabase.Email = user.Email;
-                    userInDatabase.Role = user.RoleType;
+                    userInDatabase.Role = user.Role;
                     _context.Update(userInDatabase);
                     await _context.SaveChangesAsync();
                 }
@@ -141,7 +136,7 @@ namespace ASPshop.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Details",new { id = id });
+                return RedirectToAction("Details", new { id = id });
             }
             return View(user);
         }

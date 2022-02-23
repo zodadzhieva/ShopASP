@@ -11,9 +11,9 @@ namespace ASPshop.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly ASPshopContext _context;
+        private readonly ShopContext _context;
 
-        public ProductsController(ASPshopContext context)
+        public ProductsController(ShopContext context)
         {
             _context = context;
         }
