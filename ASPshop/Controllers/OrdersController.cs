@@ -48,8 +48,8 @@ namespace ASPshop.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id");
-            ViewData["UserId"] = new SelectList(_context.User, "Id", "Id");
+            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Name");
+            ViewData["UserId"] = new SelectList(_context.User, "Id", "FullName");
             return View();
         }
 

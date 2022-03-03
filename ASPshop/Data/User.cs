@@ -1,16 +1,12 @@
-﻿using ICSharpCode.Decompiler.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ASPshop.Data
 {
-   public enum RoleType {User,Admin }
-  
+
+
     public class User
     {
-        internal readonly Role RoleType;
+       // public enum RoleType { admin,user}
 
         public int Id { get; set; }
         public string Username { get; set; }

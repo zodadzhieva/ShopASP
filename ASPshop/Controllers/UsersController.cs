@@ -43,7 +43,7 @@ namespace ASPshop.Controllers
             {
                 Id = user.Id,
                 Username = user.Username,
-                Role = user.RoleType,
+                Role = user.Role,
                 Password = user.Password,
                 FullName = user.FullName,
                 Email = user.Email
@@ -92,7 +92,7 @@ namespace ASPshop.Controllers
             {
                 Id = user.Id,
                 Username = user.Username,
-                Role = user.RoleType,
+                Role = user.Role,
                 Password = user.Password,
                 FullName = user.FullName,
                 Email = user.Email
